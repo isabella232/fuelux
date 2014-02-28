@@ -6,11 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(['require','jquery','./util'],function (require) {
-
-	var $   = require('jquery');
-	var old = $.fn.combobox;
-	require('./util');
+define(['jquery','./util'], function ($) {
 
 	// COMBOBOX CONSTRUCTOR AND PROTOTYPE
 
@@ -136,6 +132,7 @@ define(['require','jquery','./util'],function (require) {
 
 
 	// COMBOBOX PLUGIN DEFINITION
+	var old = $.fn.combobox;
 
 	$.fn.combobox = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
@@ -163,21 +160,5 @@ define(['require','jquery','./util'],function (require) {
 	};
 
 
-	// COMBOBOX DATA-API
-
-	$(function () {
-		$(window).on('load', function () {
-			$('.combobox').each(function () {
-				var $this = $(this);
-				if ($this.data('combobox')) return;
-				$this.combobox($this.data());
-			});
-		});
-
-		$('body').on('mousedown.combobox.data-api', '.combobox', function () {
-			var $this = $(this);
-			if ($this.data('combobox')) return;
-			$this.combobox($this.data());
-		});
-	});
+	return Combobox;
 });

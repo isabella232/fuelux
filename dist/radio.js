@@ -6,11 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(['require','jquery'],function (require) {
-
-	var $   = require('jquery');
-	var old = $.fn.radio;
-
+define(['jquery'], function ($) {
 	// RADIO CONSTRUCTOR AND PROTOTYPE
 
 	var Radio = function (element, options) {
@@ -96,6 +92,7 @@ define(['require','jquery'],function (require) {
 
 
 	// RADIO PLUGIN DEFINITION
+	var old = $.fn.radio;
 
 	$.fn.radio = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
@@ -124,15 +121,5 @@ define(['require','jquery'],function (require) {
 
 
 	// RADIO DATA-API
-
-	$(function () {
-		$(window).on('load', function () {
-			//$('i.radio').each(function () {
-			$('.radio-custom > input[type=radio]').each(function () {
-				var $this = $(this);
-				if ($this.data('radio')) return;
-				$this.radio($this.data());
-			});
-		});
-	});
+	return Radio;
 });

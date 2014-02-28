@@ -6,12 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(function(require) {
-
-    var $   = require('jquery');
-    var old = $.fn.select;
-    require('./util');
-
+define(['jquery','./util'], function ($) {
     // SELECT CONSTRUCTOR AND PROTOTYPE
 
     var Select = function (element, options) {
@@ -130,7 +125,7 @@ define(function(require) {
 
 
     // SELECT PLUGIN DEFINITION
-
+    var old = $.fn.select;
     $.fn.select = function (option) {
         var args = Array.prototype.slice.call(arguments, 1);
         var methodReturn;
@@ -158,7 +153,7 @@ define(function(require) {
 
 
     // SELECT DATA-API
-
+    // @ifdef DATAAPI
     $(function () {
 
         $(window).on('load', function () {
@@ -175,5 +170,7 @@ define(function(require) {
             $this.select($this.data());
         });
     });
+    // @endif
 
+    return Select;
 });

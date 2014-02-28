@@ -6,10 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(function (require) {
-
-	var $   = require('jquery');
-	var old = $.fn.datagrid;
+define(['jquery'], function ($) {
 
 	// Relates to thead .sorted styles in datagrid.less
 	var SORTED_HEADER_OFFSET = 22;
@@ -464,6 +461,7 @@ define(function (require) {
 
 
 	// DATAGRID PLUGIN DEFINITION
+	var old = $.fn.datagrid;
 
 	$.fn.datagrid = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
@@ -495,4 +493,6 @@ define(function (require) {
 		$.fn.datagrid = old;
 		return this;
 	};
+
+	return Datagrid;
 });

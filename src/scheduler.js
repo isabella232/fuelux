@@ -6,16 +6,14 @@
  * Licensed under the MIT license.
  */
 
-define(function(require) {
-    var $ = require('jquery');
-    var old = $.fn.scheduler;
-
-    require('fuelux/combobox');
-    require('fuelux/datepicker');
-    require('fuelux/radio');
-    require('fuelux/select');
-    require('fuelux/spinner');
-
+define([
+    'jquery',
+    'fuelux/combobox',
+    'fuelux/datepicker',
+    'fuelux/radio',
+    'fuelux/select',
+    'fuelux/spinner'
+], function($) {
     // SCHEDULER CONSTRUCTOR AND PROTOTYPE
 
     var Scheduler = function (element, options) {
@@ -473,6 +471,7 @@ define(function(require) {
 
 
     // SCHEDULER PLUGIN DEFINITION
+    var old = $.fn.scheduler;
 
     $.fn.scheduler = function (option) {
         var args = Array.prototype.slice.call( arguments, 1 );
@@ -500,7 +499,7 @@ define(function(require) {
     };
 
     // SCHEDULER DATA-API
-
+    // @ifdef DATAAPI
     $(function () {
         $('body').on('mousedown.scheduler.data-api', '.scheduler', function () {
             var $this = $(this);
@@ -508,5 +507,7 @@ define(function(require) {
             $this.scheduler($this.data());
         });
     });
+    // @endif
 
+    return Scheduler;
 });

@@ -6,11 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(function(require) {
-
-	var $   = require('jquery');
-	var old = $.fn.tree;
-
+define(['jquery'], function ($) {
 	// TREE CONSTRUCTOR AND PROTOTYPE
 
 	var Tree = function (element, options) {
@@ -210,6 +206,7 @@ define(function(require) {
 
 
 	// TREE PLUGIN DEFINITION
+	var old = $.fn.tree;
 
 	$.fn.tree = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
@@ -239,4 +236,6 @@ define(function(require) {
 		$.fn.tree = old;
 		return this;
 	};
+
+	return Tree;
 });

@@ -6,9 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(['require','jquery'],function (require) {
-
-	var $ = require('jquery');
+define(['jquery'], function ($) {
 
 	// custom case-insensitive match expression
 	function fuelTextExactCI(elem, text) {

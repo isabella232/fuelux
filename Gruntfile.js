@@ -13,6 +13,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-recess');
 	grunt.loadNpmTasks('grunt-saucelabs');
+	grunt.loadNpmTasks('grunt-preprocess');
 
 	// Project configuration.
 	grunt.initConfig({
@@ -110,10 +111,22 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
+		preprocess : {
+			js : {
+				src : 'processed/*.js',
+				options: {
+					inline: true,
+					context : {
+						DEBUG: false
+					}
+				}
+			}
+		},
 		requirejs: {
 			combine: {
 				options: {
-					appDir: 'src',
+					appDir: 'processed',
 					baseUrl: '.',
 					dir: 'dist',
 					optimize: 'none',
@@ -124,7 +137,7 @@ module.exports = function (grunt) {
 						almond: '../lib/almond',
 						bootstrap: '../lib/bootstrap/js',
 						jquery: '../lib/jquery-1.9.1.min',
-						fuelux: '../dist'
+						fuelux: '../processed'
 					},
 					modules: [
 						{
@@ -183,6 +196,12 @@ module.exports = function (grunt) {
 				src: ['**'],
 				dest: 'dist/img/'
 			},
+			js: {
+				expand: true,
+				cwd: 'src/',
+				src: ['**'],
+				dest: 'processed/'
+			},
 			zipsrc: {
 				expand: true,
 				cwd: 'dist/',
@@ -214,7 +233,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('quickcss', ['recess:compile', 'recess:compile_responsive']);
 	grunt.registerTask('fullcss', ['quickcss', 'recess:compress', 'recess:compress_responsive']);
 
-	grunt.registerTask('default', ['fulltest', 'requirejs', 'fullcss', 'copy:images', 'clean:dist', 'uglify', 'copy:zipsrc', 'compress', 'clean:zipsrc']);
+	grunt.registerTask('default', ['fulltest', 'copy:js', 'preprocess', 'requirejs', 'fullcss', 'copy:images', 'clean:dist', 'uglify', 'copy:zipsrc', 'compress', 'clean:zipsrc']);
 	grunt.registerTask('devserver', ['quicktest', 'quickcss', 'connect', 'watch']);
 
 	grunt.registerTask('travisci', 'Run appropriate test strategy for Travis CI', function () {

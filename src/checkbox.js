@@ -6,10 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(function (require) {
-
-	var $   = require('jquery');
-	var old = $.fn.checkbox;
+define(['jquery'], function ($) {
 
 	// CHECKBOX CONSTRUCTOR AND PROTOTYPE
 
@@ -72,25 +69,23 @@ define(function (require) {
 			var chk = $(e.target);
 			this.setState(chk);
 		},
-		
+
 		check: function () {
 			this.$chk.prop('checked', true);
 			this.setState(this.$chk);
 		},
-		
+
 		uncheck: function () {
 			this.$chk.prop('checked', false);
 			this.setState(this.$chk);
 		},
-		
+
 		isChecked: function () {
 			return this.$chk.is(':checked');
 		}
 	};
 
-
-	// CHECKBOX PLUGIN DEFINITION
-
+	var old = $.fn.checkbox;
 	$.fn.checkbox = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
 		var methodReturn;
@@ -117,8 +112,8 @@ define(function (require) {
 	};
 
 
+	// @ifdef DATAAPI
 	// CHECKBOX DATA-API
-
 	$(function () {
 		$(window).on('load', function () {
 			//$('i.checkbox').each(function () {
@@ -129,4 +124,7 @@ define(function (require) {
 			});
 		});
 	});
+	// @endif
+
+	return Checkbox;
 });

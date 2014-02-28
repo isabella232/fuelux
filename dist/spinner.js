@@ -6,11 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(['require','jquery'],function(require) {
-
-	var $   = require('jquery');
-	var old = $.fn.spinner;
-
+define(['jquery'], function ($) {
 	// SPINNER CONSTRUCTOR AND PROTOTYPE
 
 	var Spinner = function (element, options) {
@@ -178,7 +174,7 @@ define(['require','jquery'],function(require) {
 
 
 	// SPINNER PLUGIN DEFINITION
-
+	var old = $.fn.spinner;
 	$.fn.spinner = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
 		var methodReturn;
@@ -214,12 +210,5 @@ define(['require','jquery'],function(require) {
 
 
 	// SPINNER DATA-API
-
-	$(function () {
-		$('body').on('mousedown.spinner.data-api', '.spinner', function () {
-			var $this = $(this);
-			if ($this.data('spinner')) return;
-			$this.spinner($this.data());
-		});
-	});
+	return Spinner;
 });

@@ -6,10 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(['require','jquery'],function(require) {
-
-	var $   = require('jquery');
-	var old = $.fn.search;
+define(['jquery'], function ($) {
 
 	// SEARCH CONSTRUCTOR AND PROTOTYPE
 
@@ -95,6 +92,7 @@ define(['require','jquery'],function(require) {
 
 
 	// SEARCH PLUGIN DEFINITION
+	var old = $.fn.search;
 
 	$.fn.search = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
@@ -123,12 +121,5 @@ define(['require','jquery'],function(require) {
 
 
 	// SEARCH DATA-API
-
-	$(function () {
-		$('body').on('mousedown.search.data-api', '.search', function () {
-			var $this = $(this);
-			if ($this.data('search')) return;
-			$this.search($this.data());
-		});
-	});
+	return Search;
 });

@@ -6,10 +6,8 @@
  * Licensed under the MIT license.
  */
 
-define(['require','jquery'],function (require) {
+define(['require','jquery'], function (require, $) {
 
-	var $      = require('jquery');
-	var old    = $.fn.datepicker;
 	var moment = false;
 
 	// only load moment if it's there. otherwise we'll look for it in window.moment
@@ -613,7 +611,7 @@ define(['require','jquery'],function (require) {
 			if( e.target.className.indexOf( 'restrict' ) > -1 ) {
 				return this._killEvent(e);
 			}
-			
+
 			if( this.options.showDays) {
 				this.viewDate = new Date( this.viewDate.getFullYear(), this.viewDate.getMonth() - 1, 1 );
 			} else if( this.options.showMonths ) {
@@ -639,7 +637,7 @@ define(['require','jquery'],function (require) {
 			if( e.target.className.indexOf('restrict') > -1 ) {
 				return this._killEvent(e);
 			}
-			
+
 			if( this.options.showDays ) {
 				this.viewDate = new Date( this.viewDate.getFullYear(), this.viewDate.getMonth() + 1, 1 );
 			} else if( this.options.showMonths ) {
@@ -795,7 +793,7 @@ define(['require','jquery'],function (require) {
 			var dropdownHtml = '<div class="' + inputClass + '">' +
 						'<div class="dropdown-menu"></div>' +
 						'<input type="text" '+ this._calculateInputSize() +' value="'+this.formatDate( this.date ) +'" data-toggle="dropdown">';
-			
+
 			if( Boolean( this.options.createInput.dropDownBtn ) ) {
 				dropdownHtml = dropdownHtml + '<button type="button" class="btn" data-toggle="dropdown"><i class="icon-calendar"></i></button>';
 			}
@@ -847,7 +845,7 @@ define(['require','jquery'],function (require) {
 			}
 
 			if( !!triggerError ) {
-				// we will insert the staged date into the input 
+				// we will insert the staged date into the input
 				this._setNullDate( true );
 				this.$element.trigger( 'inputParsingFailed' );
 			}
@@ -949,7 +947,7 @@ define(['require','jquery'],function (require) {
 
 
 	// DATEPICKER PLUGIN DEFINITION
-
+	var old    = $.fn.datepicker;
 	$.fn.datepicker = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
 		var methodReturn;
@@ -983,4 +981,6 @@ define(['require','jquery'],function (require) {
 		$.fn.datepicker = old;
 		return this;
 	};
+
+	return Datepicker;
 });

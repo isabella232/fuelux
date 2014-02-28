@@ -6,11 +6,7 @@
  * Licensed under the MIT license.
  */
 
-define(['require','jquery'],function (require) {
-
-	var $   = require('jquery');
-	var old = $.fn.wizard;
-
+define(['jquery'], function ($) {
 	// WIZARD CONSTRUCTOR AND PROTOTYPE
 
 	var Wizard = function (element, options) {
@@ -32,7 +28,7 @@ define(['require','jquery'],function (require) {
 		this.$prevBtn.on('click', $.proxy(this.previous, this));
 		this.$nextBtn.on('click', $.proxy(this.next, this));
 		this.$element.on('click', 'li.complete', $.proxy(this.stepclicked, this));
-		
+
 		if(this.currentStep > 1) {
 			this.selectedItem(this.options.selectedItem);
 		}
@@ -106,11 +102,11 @@ define(['require','jquery'],function (require) {
 				containerWidth = this.$element.width();
 			}
 			if (totalWidth > containerWidth) {
-			
+
 				// set the position so that the last step is on the right
 				var newMargin = totalWidth - containerWidth;
 				this.$element.find('.steps').first().attr('style','margin-left: -' + newMargin + 'px');
-				
+
 				// set the position so that the active step is in a good
 				// position if it has been moved out of view
 				if (this.$element.find('li.active').first().position().left < 200) {
@@ -204,6 +200,7 @@ define(['require','jquery'],function (require) {
 
 
 	// WIZARD PLUGIN DEFINITION
+	var old = $.fn.wizard;
 
 	$.fn.wizard = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
@@ -234,12 +231,5 @@ define(['require','jquery'],function (require) {
 
 
 	// WIZARD DATA-API
-
-	$(function () {
-		$('body').on('mouseover.wizard.data-api', '.wizard', function () {
-			var $this = $(this);
-			if ($this.data('wizard')) return;
-			$this.wizard($this.data());
-		});
-	});
+	return Wizard;
 });
