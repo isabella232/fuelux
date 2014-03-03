@@ -123,7 +123,6 @@ define(['jquery','./util'], function ($) {
 
     };
 
-
     // SELECT PLUGIN DEFINITION
     var old = $.fn.select;
     $.fn.select = function (option) {
@@ -153,5 +152,24 @@ define(['jquery','./util'], function ($) {
 
 
     // SELECT DATA-API
+    // @if DATAAPI
+    $(function () {
+
+        $(window).on('load', function () {
+            $('.select').each(function () {
+                var $this = $(this);
+                if ($this.data('select')) return;
+                $this.select($this.data());
+            });
+        });
+
+        $('body').on('mousedown.select.data-api', '.select', function () {
+            var $this = $(this);
+            if ($this.data('select')) return;
+            $this.select($this.data());
+        });
+    });
+    // @endif
+
     return Select;
 });

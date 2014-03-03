@@ -172,7 +172,6 @@ define(['jquery'], function ($) {
 		}
 	};
 
-
 	// SPINNER PLUGIN DEFINITION
 	var old = $.fn.spinner;
 	$.fn.spinner = function (option) {
@@ -210,5 +209,15 @@ define(['jquery'], function ($) {
 
 
 	// SPINNER DATA-API
+	// @if DATAAPI
+	$(function () {
+		$('body').on('mousedown.spinner.data-api', '.spinner', function () {
+			var $this = $(this);
+			if ($this.data('spinner')) return;
+			$this.spinner($this.data());
+		});
+	});
+	// @endif
+
 	return Spinner;
 });

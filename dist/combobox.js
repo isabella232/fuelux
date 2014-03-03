@@ -130,7 +130,6 @@ define(['jquery','./util'], function ($) {
 
 	};
 
-
 	// COMBOBOX PLUGIN DEFINITION
 	var old = $.fn.combobox;
 
@@ -159,6 +158,25 @@ define(['jquery','./util'], function ($) {
 		return this;
 	};
 
+
+	// @if DATAAPI
+	// COMBOBOX DATA-API
+	$(function () {
+		$(window).on('load', function () {
+			$('.combobox').each(function () {
+				var $this = $(this);
+				if ($this.data('combobox')) return;
+				$this.combobox($this.data());
+			});
+		});
+
+		$('body').on('mousedown.combobox.data-api', '.combobox', function () {
+			var $this = $(this);
+			if ($this.data('combobox')) return;
+			$this.combobox($this.data());
+		});
+	});
+	// @endif
 
 	return Combobox;
 });

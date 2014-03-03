@@ -90,6 +90,7 @@ define(['jquery'], function ($) {
 
 	};
 
+	// @if JQPLUGIN
 
 	// SEARCH PLUGIN DEFINITION
 	var old = $.fn.search;
@@ -121,7 +122,7 @@ define(['jquery'], function ($) {
 
 
 	// SEARCH DATA-API
-	// @ifdef DATAAPI
+	// @if DATAAPI
 	$(function () {
 		$('body').on('mousedown.search.data-api', '.search', function () {
 			var $this = $(this);
@@ -129,6 +130,7 @@ define(['jquery'], function ($) {
 			$this.search($this.data());
 		});
 	});
+	// @endif
 	// @endif
 
 	return Search;

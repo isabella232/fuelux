@@ -945,7 +945,6 @@ define(['require','jquery'], function (require, $) {
 		}
 	};
 
-
 	// DATEPICKER PLUGIN DEFINITION
 	var old    = $.fn.datepicker;
 	$.fn.datepicker = function (option) {
@@ -981,6 +980,5 @@ define(['require','jquery'], function (require, $) {
 		$.fn.datepicker = old;
 		return this;
 	};
-
 	return Datepicker;
 });

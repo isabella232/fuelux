@@ -7,7 +7,6 @@
  */
 
 define([ "jquery", "fuelux/all"], function($) {
-
 	$(function() {
 		$(document.body).on("click", "[data-toggle=dropdown][data-direction]", function( event ) {
 

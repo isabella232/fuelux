@@ -118,7 +118,9 @@ module.exports = function (grunt) {
 				options: {
 					inline: true,
 					context : {
-						DEBUG: false
+						DEBUG: false,
+						JQPLUGIN: true,
+						DATAAPI: true
 					}
 				}
 			}
@@ -128,7 +130,7 @@ module.exports = function (grunt) {
 				options: {
 					appDir: 'processed',
 					baseUrl: '.',
-					dir: 'dist',
+					dir: 'dist/',
 					optimize: 'none',
 					optimizeCss: 'none',
 					normalizeDirDefines: 'all',
@@ -137,7 +139,7 @@ module.exports = function (grunt) {
 						almond: '../lib/almond',
 						bootstrap: '../lib/bootstrap/js',
 						jquery: '../lib/jquery-1.9.1.min',
-						fuelux: '../processed'
+						fuelux: '.'
 					},
 					modules: [
 						{

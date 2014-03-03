@@ -93,6 +93,7 @@ define(['jquery'], function ($) {
 		}
 	};
 
+	// @if JQPLUGIN
 	// PILLBOX PLUGIN DEFINITION
 	var old = $.fn.pillbox;
 
@@ -122,7 +123,7 @@ define(['jquery'], function ($) {
 	};
 
 
-	// @ifdef DATAAPI
+	// @if DATAAPI
 	// PILLBOX DATA-API
 	$(function () {
 		$('body').on('mousedown.pillbox.data-api', '.pillbox', function () {
@@ -131,6 +132,7 @@ define(['jquery'], function ($) {
 			$this.pillbox($this.data());
 		});
 	});
+	// @endif
 	// @endif
 
 	return Pillbox;

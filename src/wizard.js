@@ -198,6 +198,7 @@ define(['jquery'], function ($) {
 		}
 	};
 
+	// @if JQPLUGIN
 
 	// WIZARD PLUGIN DEFINITION
 	var old = $.fn.wizard;
@@ -231,7 +232,7 @@ define(['jquery'], function ($) {
 
 
 	// WIZARD DATA-API
-	// @ifdef DATAAPI
+	// @if DATAAPI
 	$(function () {
 		$('body').on('mouseover.wizard.data-api', '.wizard', function () {
 			var $this = $(this);
@@ -239,6 +240,7 @@ define(['jquery'], function ($) {
 			$this.wizard($this.data());
 		});
 	});
+	// @endif
 	// @endif
 
 	return Wizard;

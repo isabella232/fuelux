@@ -85,6 +85,7 @@ define(['jquery'], function ($) {
 		}
 	};
 
+	// @if JQPLUGIN
 	var old = $.fn.checkbox;
 	$.fn.checkbox = function (option) {
 		var args = Array.prototype.slice.call( arguments, 1 );
@@ -112,7 +113,7 @@ define(['jquery'], function ($) {
 	};
 
 
-	// @ifdef DATAAPI
+	// @if DATAAPI
 	// CHECKBOX DATA-API
 	$(function () {
 		$(window).on('load', function () {
@@ -124,6 +125,7 @@ define(['jquery'], function ($) {
 			});
 		});
 	});
+	// @endif
 	// @endif
 
 	return Checkbox;

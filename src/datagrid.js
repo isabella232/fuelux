@@ -459,7 +459,7 @@ define(['jquery'], function ($) {
 		}
 	};
 
-
+	// @if JQPLUGIN
 	// DATAGRID PLUGIN DEFINITION
 	var old = $.fn.datagrid;
 
@@ -493,6 +493,8 @@ define(['jquery'], function ($) {
 		$.fn.datagrid = old;
 		return this;
 	};
+
+	// @endif
 
 	return Datagrid;
 });

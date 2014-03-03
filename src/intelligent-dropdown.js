@@ -7,7 +7,7 @@
  */
 
 define([ "jquery", "fuelux/all"], function($) {
-
+	// @if DATAAPI
 	$(function() {
 		$(document.body).on("click", "[data-toggle=dropdown][data-direction]", function( event ) {
 
@@ -129,4 +129,5 @@ define([ "jquery", "fuelux/all"], function($) {
 			};
 		}
 	});
+	// @endif
 });

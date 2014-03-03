@@ -469,7 +469,6 @@ define([
         }
     };
 
-
     // SCHEDULER PLUGIN DEFINITION
     var old = $.fn.scheduler;
 
@@ -499,5 +498,15 @@ define([
     };
 
     // SCHEDULER DATA-API
+    // @if DATAAPI
+    $(function () {
+        $('body').on('mousedown.scheduler.data-api', '.scheduler', function () {
+            var $this = $(this);
+            if ($this.data('scheduler')) return;
+            $this.scheduler($this.data());
+        });
+    });
+    // @endif
+
     return Scheduler;
 });

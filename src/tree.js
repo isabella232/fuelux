@@ -204,6 +204,7 @@ define(['jquery'], function ($) {
 		}
 	};
 
+	// @if JQPLUGIN
 
 	// TREE PLUGIN DEFINITION
 	var old = $.fn.tree;
@@ -236,6 +237,8 @@ define(['jquery'], function ($) {
 		$.fn.tree = old;
 		return this;
 	};
+
+	// @endif
 
 	return Tree;
 });

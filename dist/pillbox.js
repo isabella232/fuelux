@@ -122,5 +122,16 @@ define(['jquery'], function ($) {
 	};
 
 
+	// @if DATAAPI
+	// PILLBOX DATA-API
+	$(function () {
+		$('body').on('mousedown.pillbox.data-api', '.pillbox', function () {
+			var $this = $(this);
+			if ($this.data('pillbox')) return;
+			$this.pillbox($this.data());
+		});
+	});
+	// @endif
+
 	return Pillbox;
 });

@@ -90,7 +90,7 @@ define(['jquery'], function ($) {
 		}
 	};
 
-
+	// @if JQPLUGIN
 	// RADIO PLUGIN DEFINITION
 	var old = $.fn.radio;
 
@@ -121,7 +121,7 @@ define(['jquery'], function ($) {
 
 
 	// RADIO DATA-API
-	// @ifdef DATAAPI
+	// @if DATAAPI
 	$(function () {
 		$(window).on('load', function () {
 			//$('i.radio').each(function () {
@@ -132,6 +132,7 @@ define(['jquery'], function ($) {
 			});
 		});
 	});
+	// @endif
 	// @endif
 
 	return Radio;

@@ -130,7 +130,7 @@ define(['jquery','./util'], function ($) {
 
 	};
 
-
+	// @if JQPLUGIN
 	// COMBOBOX PLUGIN DEFINITION
 	var old = $.fn.combobox;
 
@@ -160,7 +160,7 @@ define(['jquery','./util'], function ($) {
 	};
 
 
-	// @ifdef DATAAPI
+	// @if DATAAPI
 	// COMBOBOX DATA-API
 	$(function () {
 		$(window).on('load', function () {
@@ -177,6 +177,7 @@ define(['jquery','./util'], function ($) {
 			$this.combobox($this.data());
 		});
 	});
+	// @endif
 	// @endif
 
 	return Combobox;

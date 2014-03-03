@@ -90,7 +90,6 @@ define(['jquery'], function ($) {
 		}
 	};
 
-
 	// RADIO PLUGIN DEFINITION
 	var old = $.fn.radio;
 
@@ -121,5 +120,18 @@ define(['jquery'], function ($) {
 
 
 	// RADIO DATA-API
+	// @if DATAAPI
+	$(function () {
+		$(window).on('load', function () {
+			//$('i.radio').each(function () {
+			$('.radio-custom > input[type=radio]').each(function () {
+				var $this = $(this);
+				if ($this.data('radio')) return;
+				$this.radio($this.data());
+			});
+		});
+	});
+	// @endif
+
 	return Radio;
 });

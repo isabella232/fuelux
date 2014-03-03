@@ -123,6 +123,7 @@ define(['jquery','./util'], function ($) {
 
     };
 
+    // @if JQPLUGIN
 
     // SELECT PLUGIN DEFINITION
     var old = $.fn.select;
@@ -153,7 +154,7 @@ define(['jquery','./util'], function ($) {
 
 
     // SELECT DATA-API
-    // @ifdef DATAAPI
+    // @if DATAAPI
     $(function () {
 
         $(window).on('load', function () {
@@ -170,6 +171,7 @@ define(['jquery','./util'], function ($) {
             $this.select($this.data());
         });
     });
+    // @endif
     // @endif
 
     return Select;
